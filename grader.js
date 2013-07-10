@@ -69,15 +69,15 @@ if(require.main == module) {
 		.option('-u, --url <http_url>', 'URL Path')
 		.parse(process.argv);
 
-	if(program.file) {
+
+	if(program.url) {
+		var checkJson = checkHtmlURL(program.url, program.checks);
+	} else if(program.file) {
 		var checkJson = checkHtmlFile(program.file, program.checks);
 		outJson = JSON.stringify(checkJson, null, 4);
 		console.log(outJson);
 	}	
 	
-	if(program.url) {
-		var checkJson = checkHtmlURL(program.url,program.checks);
-	}		
 } else {
 
 
